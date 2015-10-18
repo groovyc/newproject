@@ -6,6 +6,8 @@ using Microsoft.WindowsAzure.Mobile.Service;
 using fourchordprojectService.DataObjects;
 using fourchordprojectService.Models;
 
+//using Microsoft.Azure.Mobile.Server;
+  
 namespace fourchordprojectService
 {
     public static class WebApiConfig
@@ -30,8 +32,10 @@ namespace fourchordprojectService
         }
     }
 
-    public class fourchordprojectInitializer : ClearDatabaseSchemaIfModelChanges<fourchordprojectContext>
+    public class fourchordprojectInitializer : DropCreateDatabaseIfModelChanges<fourchordprojectContext>
     {
+
+        // instead of clear database scheme if model changes
         protected override void Seed(fourchordprojectContext context)
         {
             List<TodoItem> todoItems = new List<TodoItem>

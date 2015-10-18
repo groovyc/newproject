@@ -8,6 +8,14 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+
+using Windows.Media.Capture;  //added all
+using Windows.Media.MediaProperties;
+using Windows.Storage;
+using Windows.UI.Xaml.Input;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Windows.UI.Xaml.Media.Imaging;
 // To add offline sync support, add the NuGet package Microsoft.WindowsAzure.MobileServices.SQLiteStore
 // to your project. Then, uncomment the lines marked // offline sync
 // For more information, see: http://aka.ms/addofflinesync
@@ -26,7 +34,56 @@ namespace fourchordproject
         {
             this.InitializeComponent();
         }
+        //private async Task InsertTodoItem(TodoItem todoItem)
+        //{
+        //    string errorString = string.Empty;
 
+        //    if (media != null)
+        //    {
+        //        // Set blob properties of TodoItem.
+        //        todoItem.ContainerName = "todoitemimages";
+
+        //        // Use a unigue GUID to avoid collisions.
+        //        todoItem.ResourceName = Guid.NewGuid().ToString();
+        //    }
+
+        //    // Send the item to be inserted. When blob properties are set this
+        //    // generates an SAS in the response.
+        //    await todoTable.InsertAsync(todoItem);
+
+        //    // If we have a returned SAS, then upload the blob.
+        //    if (!string.IsNullOrEmpty(todoItem.SasQueryString))
+        //    {
+        //        // Get the URI generated that contains the SAS 
+        //        // and extract the storage credentials.
+        //        StorageCredentials cred = new StorageCredentials(todoItem.SasQueryString);
+        //        var imageUri = new Uri(todoItem.ImageUri);
+
+        //        // Instantiate a Blob store container based on the info in the returned item.
+        //        CloudBlobContainer container = new CloudBlobContainer(
+        //            new Uri(string.Format("https://{0}/{1}",
+        //                imageUri.Host, todoItem.ContainerName)), cred);
+
+        //        // Get the new image as a stream.
+        //        using (var inputStream = await media.OpenReadAsync())
+        //        {
+        //            // Upload the new image as a BLOB from the stream.
+        //            CloudBlockBlob blobFromSASCredential =
+        //                container.GetBlockBlobReference(todoItem.ResourceName);
+        //            await blobFromSASCredential.UploadFromStreamAsync(inputStream);
+        //        }
+
+        //        // When you request an SAS at the container-level instead of the blob-level,
+        //        // you are able to upload multiple streams using the same container credentials.
+
+        //        await ResetCaptureAsync();
+        //    }
+
+        //    // Add the new item to the collection.
+        //    items.Add(todoItem);
+        //}
+
+        //commented out
         private async Task InsertTodoItem(TodoItem todoItem)
         {
             // This code inserts a new TodoItem into the database. When the operation completes
@@ -125,5 +182,9 @@ namespace fourchordproject
         //}
 
         #endregion 
+
+
+
+       
     }
 }
